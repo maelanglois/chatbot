@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import viewNav from '../views/nav';
 import viewUser from '../views/user';
+import viewChat from '../views/chat';
 
 const Search = class {
   constructor(params) {
@@ -29,11 +30,14 @@ const Search = class {
 
   render() {
     return `
-      <div class="container">
         <div class="row">
           <div class="col-12">${viewNav()}</div>
         </div>
-        <div class="row">
+      <div class="container-chat">
+        <div>
+          ${viewChat()}
+        </div>
+        <div>
           ${this.data.map((user) => viewUser(user)).join('')}
         </div>
       </div>
