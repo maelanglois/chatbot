@@ -1,10 +1,5 @@
-/* import axios from 'axios'; */
-
 import viewNav from '../views/nav';
-/* import viewUser from '../views/user';
- */
-/* import viewChat from '../views/chat'; */
-import Bot from './contact';
+import chatBot from './contact';
 import viewContacts from '../views/contacts';
 
 const Search = class {
@@ -39,7 +34,7 @@ const Search = class {
         </div>
       <div class="container-chat">
         <div>
-          ${viewContacts(this.data)}
+          ${this.data.map((Bot) => viewContacts(Bot)).join('')}
         </div>
       </div>
     `;
@@ -56,9 +51,7 @@ const Search = class {
   }
 
   run() {
-    this.data = Bot();
-    console.log(this.data);
-
+    this.data = chatBot();
     this.el.innerHTML = this.render();
   }
 };
