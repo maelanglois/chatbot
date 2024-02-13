@@ -6,7 +6,17 @@ export default (data) => {
   } = data;
 
   return `
-    <div class="col-3">
+    <div class="list-title">
+      <span class="material-symbols-outlined">mail</span>
+      <span class="list-text">Vos messages</span>
+    </div>
+    <div class="list-bot active">
+      <img src="${image}" class="list-avatar" alt="...">
+    </div>
+  `;
+};
+
+/* <div class="col-3">
       <div class="card">
         <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -15,6 +25,4 @@ export default (data) => {
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-    </div>
-  `;
-};
+    </div> */
