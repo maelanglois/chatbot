@@ -1,7 +1,9 @@
 import chatBot from './contact';
 import viewContacts from '../views/contacts';
-import viewBubble from '../views/chat-bubble'
-import viewActiveChat from '../views/active-chat'
+import viewBubble from '../views/chat-bubble';
+import viewActiveChat from '../views/active-chat';
+import viewChatBot from '../views/chatBot';
+import viewChatUser from '../views/chatUser';
 
 const Search = class {
   constructor(params) {
@@ -22,9 +24,6 @@ const Search = class {
         this.data,
         ({ user }) => user.name.first.includes(keyWord)
       );
-
-      console.log(data);
-      console.log(this.data);
     });
   }
 
@@ -41,8 +40,18 @@ const Search = class {
         <div class="chat">
           <div class="discussion">
             ${viewActiveChat()}
+            <div class="messages">
+              ${viewChatBot()}
+              ${viewChatUser()}
+              ${viewChatBot()}
+              ${viewChatUser()}
+              ${viewChatBot()}
+              ${viewChatUser()}
+              ${viewChatBot()}
+              ${viewChatUser()}
+            </div>
           </div>
-          <div class="chat-content bottom">
+          <div class="chat-content">
             ${viewBubble()}
           </div>
         </div>
