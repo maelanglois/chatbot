@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 :root{
-  --mainc1: #e82052;
+  --mainc1: #FF4171;
   --mainc2: #a055cf;
   --bg1: #636363;
   --bg2: #4d4d4d;
@@ -9,8 +9,8 @@
   --bg4: #5E5E5E;
   --bg5: #828282;
   --txt: #ededed;
-  --deg1: linear-gradient(165deg, #e82052 0%, #a055cf 100%);
-  --deg2: linear-gradient(165deg, #a055cf 0%, #e82052 100%);
+  --deg1: linear-gradient(165deg, #FF4171 0%, #a055cf 100%);
+  --deg2: linear-gradient(165deg, #a055cf 0%, #FF4171 100%);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -161,6 +161,7 @@ body {
   background: none;
   border: none !important;
   outline: none !important;
+  width: 100%;
 }
 
 ::placeholder {
@@ -175,4 +176,21 @@ body {
   height: 30px;
   font-size: 15px;
   border-radius: 150px;
+}
+
+
+
+/* HEADER */
+
+
+
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 50px;
+  position: fixed;
+  background-color: var(--bg3);
 }

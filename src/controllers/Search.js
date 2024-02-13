@@ -1,6 +1,7 @@
 import chatBot from './contact';
 import viewContacts from '../views/contacts';
 import viewBubble from '../views/chat-bubble'
+import viewActiveChat from '../views/active-chat'
 
 const Search = class {
   constructor(params) {
@@ -39,7 +40,7 @@ const Search = class {
         </div>
         <div class="chat">
           <div class="discussion">
-
+            ${viewActiveChat()}
           </div>
           <div class="chat-content bottom">
             ${viewBubble()}
