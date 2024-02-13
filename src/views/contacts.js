@@ -1,16 +1,16 @@
 export default (data) => {
   const {
-    name,
+    nom,
     statut,
-    picture
+    image
   } = data;
 
   return `
     <div class="col-3">
       <div class="card">
-        <img src="${picture}" class="card-img-top" alt="...">
+        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">${name}</h5>
+          <h5 class="card-title">${nom}</h5>
           <p class="card-text">${statut}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>

@@ -1,17 +1,17 @@
-import axios from 'axios';
+/* import axios from 'axios'; */
 
 import viewNav from '../views/nav';
 import viewUser from '../views/user';
-import viewChat from '../views/chat';
-import Bot from '../controllers/contact';
-import viewContacts from '../view/contacts';
+/* import viewChat from '../views/chat'; */
+import Bot from './contact';
+import viewContacts from '../views/contacts';
 
 const Search = class {
   constructor(params) {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
-    
+
     this.run();
   }
 
@@ -58,8 +58,9 @@ const Search = class {
   }
 
   run() {
-    /*const { results } = this.params;*/
+    /* const { results } = this.params; */
     this.data = Bot();
+    console.log(this.data);
 
     /* axios
       .get(`https://randomuser.me/api/0.8/?results=${results}`)
@@ -80,6 +81,7 @@ const Search = class {
         this.el.innerHTML = this.render();
         this.onKeyUp();
       }); */
+    this.el.innerHTML = viewContacts(this.data);
   }
 };
 
