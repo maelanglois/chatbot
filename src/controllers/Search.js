@@ -1,9 +1,9 @@
-import axios from 'axios';
+/* import axios from 'axios'; */
 
 import viewNav from '../views/nav';
 import viewUser from '../views/user';
-import viewChat from '../views/chat';
-import Bot from '../controllers/contact';
+/* import viewChat from '../views/chat'; */
+import Bot from './contact';
 import viewContacts from '../views/contacts';
 
 const Search = class {
@@ -11,7 +11,7 @@ const Search = class {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
-    
+
     this.run();
   }
 
@@ -58,7 +58,7 @@ const Search = class {
   }
 
   run() {
-    /*const { results } = this.params;*/
+    /* const { results } = this.params; */
     this.data = Bot();
 
     /* axios
