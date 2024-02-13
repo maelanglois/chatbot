@@ -4,7 +4,7 @@ import viewNav from '../views/nav';
 import viewUser from '../views/user';
 import viewChat from '../views/chat';
 import Bot from '../controllers/contact';
-import viewContacts from '../view/contacts';
+import viewContacts from '../views/contacts';
 
 const Search = class {
   constructor(params) {
