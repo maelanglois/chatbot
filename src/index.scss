@@ -125,7 +125,13 @@ body {
 
 .chat{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+}
+
+.discussion{
+  height: 90%;
+  width: 100%;
 }
 
 
@@ -136,7 +142,7 @@ body {
 
 
 .chat-content{
-  width: 75%;
+  width: 100%;
 }
 
 .chat-contain{
