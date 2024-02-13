@@ -1,7 +1,8 @@
 /* import axios from 'axios'; */
 
 import viewNav from '../views/nav';
-import viewUser from '../views/user';
+/* import viewUser from '../views/user';
+ */
 /* import viewChat from '../views/chat'; */
 import Bot from './contact';
 import viewContacts from '../views/contacts';
@@ -40,9 +41,6 @@ const Search = class {
         <div>
           ${viewContacts(this.data)}
         </div>
-        <div>
-          ${this.data.map((user) => viewUser(user)).join('')}
-        </div>
       </div>
     `;
   }
@@ -58,30 +56,10 @@ const Search = class {
   }
 
   run() {
-    /* const { results } = this.params; */
     this.data = Bot();
     console.log(this.data);
 
-    /* axios
-      .get(`https://randomuser.me/api/0.8/?results=${results}`)
-      .then((res) => {
-        const { data } = res;
-        const { age } = this.params;
-
-        this.data = this.filters(
-          parseInt(age, 10),
-          data.results,
-          ({ user }) => (
-            new Date(
-              new Date().getTime() - new Date(user.dob * 1000).getTime()
-            ).getFullYear() - 1970 > age
-          )
-        );
-
-        this.el.innerHTML = this.render();
-        this.onKeyUp();
-      }); */
-    this.el.innerHTML = viewContacts(this.data);
+    this.el.innerHTML = this.render();
   }
 };
 
