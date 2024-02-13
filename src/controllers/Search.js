@@ -3,13 +3,15 @@ import axios from 'axios';
 import viewNav from '../views/nav';
 import viewUser from '../views/user';
 import viewChat from '../views/chat';
+import Bot from '../controllers/contact';
+import viewContacts from '../view/contacts';
 
 const Search = class {
   constructor(params) {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
-
+    
     this.run();
   }
 
@@ -25,6 +27,7 @@ const Search = class {
       );
 
       console.log(data);
+      console.log(this.data);
     });
   }
 
@@ -35,7 +38,7 @@ const Search = class {
         </div>
       <div class="container-chat">
         <div>
-          ${viewChat()}
+          ${viewContacts(this.data)}
         </div>
         <div>
           ${this.data.map((user) => viewUser(user)).join('')}
@@ -55,9 +58,10 @@ const Search = class {
   }
 
   run() {
-    const { results } = this.params;
+    /*const { results } = this.params;*/
+    this.data = Bot();
 
-    axios
+    /* axios
       .get(`https://randomuser.me/api/0.8/?results=${results}`)
       .then((res) => {
         const { data } = res;
@@ -75,7 +79,7 @@ const Search = class {
 
         this.el.innerHTML = this.render();
         this.onKeyUp();
-      });
+      }); */
   }
 };
 
