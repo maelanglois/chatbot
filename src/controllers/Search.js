@@ -1,6 +1,6 @@
-import viewNav from '../views/nav';
 import chatBot from './contact';
 import viewContacts from '../views/contacts';
+import viewBubble from '../views/chat-bubble'
 
 const Search = class {
   constructor(params) {
