@@ -60,6 +60,7 @@ const Search = class {
   run() {
     /* const { results } = this.params; */
     this.data = Bot();
+    console.log(this.data);
 
     /* axios
       .get(`https://randomuser.me/api/0.8/?results=${results}`)
@@ -80,6 +81,7 @@ const Search = class {
         this.el.innerHTML = this.render();
         this.onKeyUp();
       }); */
+    this.el.innerHTML = viewContacts(this.data);
   }
 };
 
