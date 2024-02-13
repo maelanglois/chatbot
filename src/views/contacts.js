@@ -6,12 +6,12 @@ export default (data) => {
   } = data;
 
   return `
-    <div class="list-title">
-      <span class="material-symbols-outlined">mail</span>
-      <span class="list-text">Vos messages</span>
-    </div>
     <div class="list-bot active">
       <img src="${image}" class="list-avatar" alt="...">
+      <div class="list-infos">
+        <div class="list-pseudo">${nom}</div>
+        <div class="list-statut">${statut}</div>
+      </div>
     </div>
   `;
 };

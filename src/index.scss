@@ -88,6 +88,8 @@ body {
   border-radius: 10px;
   background: none;
   padding: 10px;
+  gap: 20px;
+  align-items: center;
 }
 
 .active{
@@ -99,4 +101,17 @@ body {
   height: 50px;
   border-radius: 150px;
   object-fit: cover;
+}
+
+.list-infos{
+  display: flex;
+  flex-direction: column;
+}
+
+.list-pseudo{
+  font-size: 14px;
+}
+
+.list-statut{
+  font-size: 10px;
 }
