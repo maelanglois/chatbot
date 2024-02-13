@@ -31,11 +31,19 @@ const Search = class {
     return `
       <div class="container-chat">
         <div class="chat-list">
-        <div class="list-title">
-          <span class="material-symbols-outlined">mail</span>
-          <span class="list-text">Vos messages</span>
+          <div class="list-title">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="list-text">Vos messages</span>
+          </div>
+          ${this.data.map((Bot) => viewContacts(Bot)).join('')}
         </div>
-        ${this.data.map((Bot) => viewContacts(Bot)).join('')}
+        <div class="chat">
+          <div class="discussion">
+
+          </div>
+          <div class="chat-content bottom">
+            ${viewBubble()}
+          </div>
         </div>
       </div>
     `;

@@ -7,6 +7,7 @@
   --bg2: #4d4d4d;
   --bg3: #303030;
   --bg4: #5E5E5E;
+  --bg5: #828282;
   --txt: #ededed;
   --deg1: linear-gradient(165deg, #e82052 0%, #a055cf 100%);
   --deg2: linear-gradient(165deg, #a055cf 0%, #e82052 100%);
@@ -114,4 +115,58 @@ body {
 
 .list-statut{
   font-size: 10px;
+}
+
+
+
+/* CHAT */
+
+
+
+.chat{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+/* CHAT TYPE */
+
+
+
+
+.chat-content{
+  width: 75%;
+}
+
+.chat-contain{
+  width: 95%;
+  margin: 10px auto;
+  background-color: var(--bg5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chat-type{
+  color: var(--txt);
+  background: none;
+  border: none !important;
+  outline: none !important;
+}
+
+::placeholder {
+  color: var(--txt);
+}
+
+.chat-send{
+  background: var(--deg2);
+  color: var(--txt);
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 150px;
 }
