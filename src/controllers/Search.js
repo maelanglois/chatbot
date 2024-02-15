@@ -10,7 +10,9 @@ const Search = class {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
-    sessionStorage.setItem('bot', 1);
+    if (!sessionStorage.getItem('bot')) {
+      sessionStorage.setItem('bot', 1);
+    }
 
     this.run();
   }
