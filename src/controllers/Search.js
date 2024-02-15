@@ -11,7 +11,7 @@ const Search = class {
     this.params = params;
     this.data = [];
     if (!sessionStorage.getItem('bot')) {
-      sessionStorage.setItem('bot', 1);
+      sessionStorage.setItem('bot', 0);
     }
 
     this.run();
