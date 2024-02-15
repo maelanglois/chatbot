@@ -10,6 +10,7 @@ const Search = class {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
+    sessionStorage.setItem('bot', 1);
 
     this.run();
   }
@@ -35,20 +36,13 @@ const Search = class {
             <span class="material-symbols-outlined">mail</span>
             <span class="list-text">Vos messages</span>
           </div>
-          ${this.data.map((Bot) => viewContacts(Bot)).join('')}
+          ${this.data.map((Bot) => viewContacts(Bot, this.data)).join('')}
         </div>
         <div class="chat">
-          <div class="discussion">
-            ${viewActiveChat()}
+          <div class="discussion" id="discussion">
+            <div class="header">
+            </div>
             <div class="messages">
-              ${viewChatBot()}
-              ${viewChatUser()}
-              ${viewChatBot()}
-              ${viewChatUser()}
-              ${viewChatBot()}
-              ${viewChatUser()}
-              ${viewChatBot()}
-              ${viewChatUser()}
             </div>
           </div>
           <div class="chat-content">
@@ -69,9 +63,30 @@ const Search = class {
     return updateData;
   }
 
+  currentBot() {
+    const length = this.data.length;
+    for (let k = 0; k < length; k += 1) {
+      document.querySelector('#a'.concat(k)).classList.remove('active');
+      document.querySelector('#a'.concat(k)).addEventListener('click', () => {
+        document.querySelector('.header').innerHTML = viewActiveChat(k);
+        document.querySelector('.messages').innerHTML = viewChatBot(k) + viewChatUser();
+        for (let i = 0; i < length; i += 1) {
+          document.querySelector('#a'.concat(i)).classList.remove('active');
+        }
+        document.querySelector('#a'.concat(k)).className += ' active';
+        sessionStorage.setItem('bot', k);
+      });
+    }
+    const b = parseInt(sessionStorage.getItem('bot'), 10);
+    document.querySelector('.header').innerHTML = viewActiveChat(b);
+    document.querySelector('.messages').innerHTML = viewChatBot(b) + viewChatUser();
+    document.querySelector('#a'.concat(b)).className += ' active';
+  }
+
   run() {
     this.data = chatBot();
     this.el.innerHTML = this.render();
+    this.currentBot();
   }
 };
 
