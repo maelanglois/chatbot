@@ -1,5 +1,5 @@
 export default () => {
-  const Bot = class Bot {
+/*   const Bot = class Bot {
     constructor(entity){
       this.entity = entity;
     }
@@ -37,7 +37,7 @@ export default () => {
     }]
   }]
 
-
+ */
 
   function Bot(nom, image, statut, number, action) {
     this.nom = nom;
