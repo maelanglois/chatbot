@@ -6,6 +6,15 @@ export default (keyword) => {
   botFunct.date = ['quel jour', 'date'];
   botFunct.heure = ['heure']
   botFunct.meteo = ['temps', 'meteo', 'météo'];
+
+  function bonjour() {
+    return 'Bonjour,'
+  }
+
+  function date() {
+    
+  }
+
   const data = chatBot();
   let botAction = []
   let currentBot = data.map((Bot) => Bot);
@@ -20,6 +29,15 @@ export default (keyword) => {
       }
     })
   }
+  const iterator = botFunct.keys();
+  for (const key of iterator) {
+    botFunct[key].map( (e) => {
+      if( keyword == e) {
+
+      }
+    })
+  }
+
 
   return currentBot;
 }
