@@ -8,6 +8,7 @@ const Conversation = class {
     this.bot2 = [];
     this.bot3 = [];
     this.user = [];
+    this.currentBot = 1;
     this.conversation = ``;
 
     this.run();
@@ -39,22 +40,28 @@ const Conversation = class {
 
   bot1Mess() {
     const message = chatBot(0);
+    this.currentBot = 0;
     this.bot1 += message;
     this.conversation += message;
   }
 
   bot2Mess() {
-    const message = chatBot(0);
+    const message = chatBot(1);
+    this.currentBot = 1;
     this.bot2 += message;
     this.conversation += message;
   }
 
   bot3Mess() {
-    const message = chatBot(0);
+    const message = chatBot(2);
+    this.currentBot = 2;
     this.bot3 += message;
     this.conversation += message;
   }
 
+  thisBot(bot) {
+    sessionStorage.setItem('bot', bot);
+  }
 
   run() {
     this.userMessage();
@@ -62,6 +69,7 @@ const Conversation = class {
     this.bot2Mess();
     this.bot3Mess();
     this.el.innerHTML = this.conversation;
+    this.thisBot(this.currentBot);
   }
 }
 

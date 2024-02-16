@@ -11,9 +11,6 @@ const Search = class {
     this.el = document.querySelector('#root');
     this.params = params;
     this.data = [];
-    if (!sessionStorage.getItem('bot')) {
-      sessionStorage.setItem('bot', 0);
-    }
 
     this.run();
   }
@@ -57,14 +54,6 @@ const Search = class {
     const length = this.data.length;
     for (let k = 0; k < length; k += 1) {
       document.querySelector('#a'.concat(k)).classList.remove('active');
-      document.querySelector('#a'.concat(k)).addEventListener('click', () => {
-        document.querySelector('.header').innerHTML = viewActiveChat(k);;
-        for (let i = 0; i < length; i += 1) {
-          document.querySelector('#a'.concat(i)).classList.remove('active');
-        }
-        document.querySelector('#a'.concat(k)).className += ' active';
-        sessionStorage.setItem('bot', k);
-      });
     }
     const b = parseInt(sessionStorage.getItem('bot'), 10);
     document.querySelector('.header').innerHTML = viewActiveChat(b);
@@ -74,8 +63,8 @@ const Search = class {
   run() {
     this.data = chatBot();
     this.el.innerHTML = this.render();
+    new conversation();    
     this.currentBot();
-    new conversation();
   }
 };
 
