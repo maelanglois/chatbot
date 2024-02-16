@@ -4,6 +4,7 @@ import viewBubble from '../views/chat-bubble';
 import viewActiveChat from '../views/active-chat';
 import viewChatBot from '../views/chatBot';
 import viewChatUser from '../views/chatUser';
+import conversation from './conversation';
 
 const Search = class {
   constructor(params) {
@@ -15,19 +16,6 @@ const Search = class {
     }
 
     this.run();
-  }
-
-  onKeyUp() {
-    const elInputSearch = document.querySelector('.input-search');
-
-    elInputSearch.addEventListener('keyup', () => {
-      const keyWord = elInputSearch.value;
-      const data = this.filters(
-        'name',
-        this.data,
-        ({ user }) => user.name.first.includes(keyWord)
-      );
-    });
   }
 
   render() {
@@ -89,6 +77,7 @@ const Search = class {
     this.data = chatBot();
     this.el.innerHTML = this.render();
     this.currentBot();
+    new conversation();
   }
 };
 

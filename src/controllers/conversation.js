@@ -1,0 +1,68 @@
+import chatBot from '../views/chatBot';
+import viewChatUser from '../views/chatUser';
+
+const Conversation = class {
+  constructor() {
+    this.el = document.querySelector('.messages');
+    this.bot1 = [];
+    this.bot2 = [];
+    this.bot3 = [];
+    this.user = [];
+    this.conversation = ``;
+
+    this.run();
+  }
+
+  userMessage() {
+    const elInputSearch = document.querySelector('.chat-type');
+    elInputSearch.addEventListener('keyup', (e) => {
+      if (e.key == 'Enter') {
+        const keyWord = elInputSearch.value;
+        this.user += keyWord;
+        const user = viewChatUser(keyWord)
+        this.conversation += user;
+        console.log(this.conversation);
+        elInputSearch.value = '';
+        this.el.innerHTML = this.conversation;
+      }
+    });
+    const submit = document.querySelector('#submit');
+    submit.addEventListener('click', () => {
+      const keyWord = elInputSearch.value;
+        this.user += keyWord;
+        const user = viewChatUser(keyWord)
+        this.conversation += user;
+        elInputSearch.value = '';
+        this.el.innerHTML = this.conversation;
+    })
+  }
+
+  bot1Mess() {
+    const message = chatBot(0);
+    this.bot1 += message;
+    this.conversation += message;
+  }
+
+  bot2Mess() {
+    const message = chatBot(0);
+    this.bot2 += message;
+    this.conversation += message;
+  }
+
+  bot3Mess() {
+    const message = chatBot(0);
+    this.bot3 += message;
+    this.conversation += message;
+  }
+
+
+  run() {
+    this.userMessage();
+    this.bot1Mess();
+    this.bot2Mess();
+    this.bot3Mess();
+    this.el.innerHTML = this.conversation;
+  }
+}
+
+export default Conversation ;
