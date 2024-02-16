@@ -1,55 +1,95 @@
+import viewChatBot from '../views/chatBot';
+
 export default () => {
-/*   const Bot = class Bot {
+  const Bot = class Bot {
     constructor(entity){
       this.entity = entity;
     }
-  
-    getAction(word) {
+
+    thisAction(word) {
       const { actions } = this.entity;
+      let result = '';
       actions.forEach(action => {
-        if (action.word === word){
-          console.log(action.result, this.entity);
-        }
+        const { mots } = action;
+        mots.forEach((mot) => {
+          if (mot === word){
+            result += viewChatBot(this.getNombre(), action.result)
+          }
+        })
       });
+      return result;
+    }
+
+    getNom() {
+      const { nom } = this.entity
+      return nom;
+    }
   
+    getImage() {
+      const { image } = this.entity;
+      return image
+    }
+  
+    getStatut() {
+      const { statut } = this.entity;
+      return statut;
+    }
+
+    getNombre() {
+      const { nombre } = this.entity;
+      return nombre;
+    }
+
+    getActions() {
+      const { actions } = this.entity;
+      return actions;
     }
   };
 
   const entitys = [{
-    name : 'Wall-e',
-    image : '',
-    statut : '',
+    nom : 'Wall-e',
+    image : 'https://www.macplus.net/app/uploads/2008/05/jpg_wall_e_eve.jpg',
+    statut : 'Directive ?',
+    nombre : 0,
     actions : [{
-      name : 'bonjour',
-      word : 'bonjour',
-      result : 'bonjour'
+      nom : 'bonjour',
+      mots : ['bonjour', 'Bonjour', 'Hello', 'hello', 'Salut', 'salut', 'Coucou', 'coucou'],
+      result : 'Bonjour'
+    }, {
+      nom : 'date',
+      mots : ['Jour', 'jour', 'date'],
+      result : new Date().toLocaleDateString()
     }]
   },{
-    name: 'Max',
+    nom : 'Bumblebee',
+    image : 'https://www.madinjapan.fr/29785-large_default/transformers-statue-bumblebee-prime-1-studio.jpg',
+    statut : "Sorry I'm late, hit a little traffic.",
+    nombre : 1,
     actions : [{
-      name : 'heure',
-      word : 'heure',
-      result : () => new Date().toLocaleTimeString()
+      nom : 'heure',
+      mots : ['heure', 'Heure'],
+      result : new Date().toLocaleTimeString()
     }, {
-      name : 'bonjour',
-      word : 'bonjour',
-      result : 'bonjour'
+      nom : 'bonjour',
+      mots : ['bonjour', 'Bonjour', 'Hello', 'hello', 'Salut', 'salut', 'Coucou', 'coucou'],
+      result : 'Bonjour'
+    }]
+  },{
+    nom : 'R2D2',
+    image : 'https://lumiere-a.akamaihd.net/v1/images/r2-d2-main_f315b094.jpeg?region=364%2C0%2C716%2C536',
+    statut : 'beep boop beep',
+    nombre : 2,
+    actions : [{
+      nom : 'heure',
+      mots : ['heure', 'Heure'],
+      result : new Date().toLocaleTimeString()
+    }, {
+      nom : 'meteo',
+      mots : ['meteo', 'temps', 'Meteo'],
+      result : 'Il fait beau !'
     }]
   }]
+  const bots = entitys.map((bot) => new Bot(bot));
 
- */
-
-  function Bot(nom, image, statut, number, action) {
-    this.nom = nom;
-    this.image = image;
-    this.statut = statut;
-    this.number = number;
-    this.action = action;
-  }
-  const bot1 = new Bot('Wall-e', 'https://www.macplus.net/app/uploads/2008/05/jpg_wall_e_eve.jpg', 'Directive ?', 0, ['bonjour', 'heure']);
-  const bot2 = new Bot('Bumblebee', 'https://www.madinjapan.fr/29785-large_default/transformers-statue-bumblebee-prime-1-studio.jpg', "Sorry I'm late, hit a little traffic.", 1, ['bonjour', 'date']);
-  const bot3 = new Bot('R2D2', 'https://lumiere-a.akamaihd.net/v1/images/r2-d2-main_f315b094.jpeg?region=364%2C0%2C716%2C536', 'beep boop beep', 2, ['bonjour', 'meteo']);
-  const cbot = [bot1, bot2, bot3];
-
-  return cbot;
+  return bots;
 };

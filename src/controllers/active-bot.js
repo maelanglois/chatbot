@@ -2,9 +2,9 @@ import chatBot from './contact';
 
 export default (k) => {
   const data = chatBot();
-  let currentBot = data.map((Bot) => Bot);
+  let currentBot;
   for (let i = k; i < k + 1; i += 1) {
-    currentBot = currentBot[i];
+    currentBot = data[i];
   }
 
   return currentBot;

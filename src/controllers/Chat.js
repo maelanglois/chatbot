@@ -50,21 +50,24 @@ const Search = class {
     return updateData;
   }
 
-  currentBot() {
-    const length = this.data.length;
-    for (let k = 0; k < length; k += 1) {
-      document.querySelector('#a'.concat(k)).classList.remove('active');
+  currentBot(conv) {
+    if (conv) {
+      const length = this.data.length;
+      for (let k = 0; k < length; k += 1) {
+        document.querySelector('#a'.concat(k)).classList.remove('active');
+      }
+      const b = parseInt(sessionStorage.getItem('bot'), 10);
+      document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+      document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
     }
-    const b = parseInt(sessionStorage.getItem('bot'), 10);
-    document.querySelector('.header').innerHTML = viewActiveChat(b);
-    document.querySelector('#a'.concat(b)).className += ' active';
   }
 
   run() {
     this.data = chatBot();
+    console.log(this.data);
     this.el.innerHTML = this.render();
-    new Conversation();
-    this.currentBot();
+    const conv = new Conversation();
+    this.currentBot(conv);
   }
 };
 
