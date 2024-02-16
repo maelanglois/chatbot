@@ -124,6 +124,24 @@ body {
 
 
 
+.pulse {
+  transition: 0.5s;
+}
+
+.pulse:hover{
+  transition: 0.5s;
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
 .chat{
   display: flex;
   flex-direction: column;
