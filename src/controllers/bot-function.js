@@ -2,36 +2,36 @@ import chatBot from './contact';
 
 export default (keyword) => {
   const retour = [];
-  retour.bot=[];
-  retour.response=[];
+  retour.bot = [];
+  retour.response = [];
 
-  const botFunct = []
+  const botFunct = [];
   botFunct.bonjour = ['hello', 'bonjour', 'hola', 'salut', 'coucou'];
-  botFunct.date = ['quel jour', 'date'];
-  botFunct.heure = ['heure']
+  botFunct.date = ['jour', 'date'];
+  botFunct.heure = ['heure'];
   botFunct.meteo = ['temps', 'meteo', 'météo'];
 
   function bonjour() {
-    return 'Bonjour,'
+    return 'Bonjour,';
   }
 
   function date() {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
+    const dateNow = new Date();
+    const day = dateNow.getDate();
+    const month = dateNow.getMonth();
+    const year = dateNow.getFullYear();
     return `Nous sommes le ${day} ${month} ${year}`;
   }
 
   function heure() {
-    const now = new Date(); 
+    const now = new Date();
     const hour = now.getHours();
     const minutes = now.getMinutes();
-    return `Il est ${hour}h${minutes}`
+    return `Il est ${hour}h${minutes}`;
   }
 
-  function meteo(){
-    return 'Il fait beau ! :sunglasses:'
+  function meteo() {
+    return 'Il fait beau ! :sunglasses:';
   }
 
   const response = [];
@@ -47,11 +47,11 @@ export default (keyword) => {
     const {
       action
     } = currentBot;
-    action.forEach((element) => { 
-      if(element == keyword) {
+    action.forEach((element) => {
+      if (element === keyword) {
         retour.bot += i;
       }
-    })
+    });
   }
   const iterator = botFunct.keys();
   for (const key of iterator) {
@@ -63,6 +63,5 @@ export default (keyword) => {
     }) */
   }
 
-  return botFunct;
-}
-
+  return retour;
+};

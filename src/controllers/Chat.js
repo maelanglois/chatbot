@@ -2,9 +2,9 @@ import chatBot from './contact';
 import viewContacts from '../views/contacts';
 import viewBubble from '../views/chat-bubble';
 import viewActiveChat from '../views/active-chat';
-import viewChatBot from '../views/chatBot';
-import viewChatUser from '../views/chatUser';
-import conversation from './conversation';
+/* import viewChatBot from '../views/chatBot';
+import viewChatUser from '../views/chatUser'; */
+import Conversation from './conversation';
 
 const Search = class {
   constructor(params) {
@@ -63,7 +63,7 @@ const Search = class {
   run() {
     this.data = chatBot();
     this.el.innerHTML = this.render();
-    new conversation();    
+    new Conversation();
     this.currentBot();
   }
 };

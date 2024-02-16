@@ -1,4 +1,44 @@
 export default () => {
+  const Bot = class Bot {
+    constructor(entity){
+      this.entity = entity;
+    }
+  
+    getAction(word) {
+      const { actions } = this.entity;
+      actions.forEach(action => {
+        if (action.word === word){
+          console.log(action.result, this.entity);
+        }
+      });
+  
+    }
+  };
+
+  const entitys = [{
+    name : 'Wall-e',
+    image : '',
+    statut : '',
+    actions : [{
+      name : 'bonjour',
+      word : 'bonjour',
+      result : 'bonjour'
+    }]
+  },{
+    name: 'Max',
+    actions : [{
+      name : 'heure',
+      word : 'heure',
+      result : () => new Date().toLocaleTimeString()
+    }, {
+      name : 'bonjour',
+      word : 'bonjour',
+      result : 'bonjour'
+    }]
+  }]
+
+
+
   function Bot(nom, image, statut, number, action) {
     this.nom = nom;
     this.image = image;
