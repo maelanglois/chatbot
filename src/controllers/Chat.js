@@ -21,7 +21,7 @@ const Search = class {
         <div class="chat-list">
           <div class="list-title">
             <span class="material-symbols-outlined">mail</span>
-            <span class="list-text">Vos messages</span>
+            <span class="list-text">Participants</span>
           </div>
           ${this.data.map((Bot) => viewContacts(Bot, this.data)).join('')}
         </div>
