@@ -201,9 +201,20 @@ body {
   gap: 10px;
 }
 
+.pseudo{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
 .bubble-pseudo{
   font-size: 15px;
   max-width: 80%;
+}
+
+.date{
+  font-size: 10px;
 }
 
 .bubble-bubble-ia{
