@@ -58,8 +58,7 @@ const Search = class {
     for (let k = 0; k < length; k += 1) {
       document.querySelector('#a'.concat(k)).classList.remove('active');
       document.querySelector('#a'.concat(k)).addEventListener('click', () => {
-        document.querySelector('.header').innerHTML = viewActiveChat(k);
-        document.querySelector('.messages').innerHTML = viewChatBot(k) + viewChatUser();
+        document.querySelector('.header').innerHTML = viewActiveChat(k);;
         for (let i = 0; i < length; i += 1) {
           document.querySelector('#a'.concat(i)).classList.remove('active');
         }
@@ -69,7 +68,6 @@ const Search = class {
     }
     const b = parseInt(sessionStorage.getItem('bot'), 10);
     document.querySelector('.header').innerHTML = viewActiveChat(b);
-    document.querySelector('.messages').innerHTML = viewChatBot(b) + viewChatUser();
     document.querySelector('#a'.concat(b)).className += ' active';
   }
 
