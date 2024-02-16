@@ -12,7 +12,7 @@ export default (keyword) => {
   }
 
   function date() {
-    
+    const date = Date.now();
   }
 
   const data = chatBot();
