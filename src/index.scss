@@ -313,3 +313,23 @@ body {
   top: 0;
   background-color: var(--bg3);
 }
+
+
+
+
+/* RESPONSIVE */
+
+
+@media screen and (max-width: 767px){
+  .list-text{
+    display: none;
+  }
+
+  .list-title{
+    justify-content: center;
+  }
+
+  .list-bot{
+    flex-direction: column;
+  }
+}
