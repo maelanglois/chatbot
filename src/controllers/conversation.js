@@ -1,6 +1,6 @@
 import chatBot from '../views/chatBot';
 import viewChatUser from '../views/chatUser';
-import botFunction from './bot-function';
+import botFunct from './bot-function';
 
 const Conversation = class {
   constructor() {
@@ -10,7 +10,7 @@ const Conversation = class {
     this.bot3 = [];
     this.user = [];
     this.currentBot = 1;
-    this.conversation = ``;
+    this.conversation = '';
 
     this.run();
   }
@@ -18,27 +18,25 @@ const Conversation = class {
   userMessage() {
     const elInputSearch = document.querySelector('.chat-type');
     elInputSearch.addEventListener('keyup', (e) => {
-      if (e.key == 'Enter') {
+      if (e.key === 'Enter') {
         const keyWord = elInputSearch.value;
         this.user += keyWord;
-        const user = viewChatUser(keyWord)
+        const user = viewChatUser(keyWord);
         this.conversation += user;
-        console.log(this.conversation);
         elInputSearch.value = '';
         this.el.innerHTML = this.conversation;
-
+        console.log(botFunct);
       }
     });
     const submit = document.querySelector('#submit');
     submit.addEventListener('click', () => {
       const keyWord = elInputSearch.value;
-        this.user += keyWord;
-        const user = viewChatUser(keyWord)
-        this.conversation += user;
-        elInputSearch.value = '';
-        this.el.innerHTML = this.conversation;
-    })
-    
+      this.user += keyWord;
+      const user = viewChatUser(keyWord);
+      this.conversation += user;
+      elInputSearch.value = '';
+      this.el.innerHTML = this.conversation;
+    });
   }
 
   bot1Mess() {
@@ -74,6 +72,6 @@ const Conversation = class {
     this.el.innerHTML = this.conversation;
     this.thisBot(this.currentBot);
   }
-}
+};
 
-export default Conversation ;
+export default Conversation;
