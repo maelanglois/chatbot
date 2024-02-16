@@ -1,5 +1,6 @@
 import chatBot from '../views/chatBot';
 import viewChatUser from '../views/chatUser';
+import botFunction from './bot-function';
 
 const Conversation = class {
   constructor() {
@@ -25,6 +26,7 @@ const Conversation = class {
         console.log(this.conversation);
         elInputSearch.value = '';
         this.el.innerHTML = this.conversation;
+
       }
     });
     const submit = document.querySelector('#submit');
@@ -36,6 +38,7 @@ const Conversation = class {
         elInputSearch.value = '';
         this.el.innerHTML = this.conversation;
     })
+    
   }
 
   bot1Mess() {

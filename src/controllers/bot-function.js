@@ -35,13 +35,12 @@ export default (keyword) => {
   }
 
   const response = [];
-  response.bonjour = new bonjour();
-  response.date = new date();
-  response.heure = new heure();
-  response.meteo = new meteo();
+  response.bonjour = bonjour();
+  response.date = date();
+  response.heure = heure();
+  response.meteo = meteo();
 
   const data = chatBot();
-  let botAction = []
   let currentBot = data.map((Bot) => Bot);
   for (let i = 0; i < data.length; i += 1) {
     currentBot = currentBot[i];
@@ -50,19 +49,20 @@ export default (keyword) => {
     } = currentBot;
     action.forEach((element) => { 
       if(element == keyword) {
-        botAction += i;
+        retour.bot += i;
       }
     })
   }
   const iterator = botFunct.keys();
   for (const key of iterator) {
-    botFunct[key].map( (e) => {
+    console.log(botFunct[key]);
+  /*  botFunct[key].map( (e) => {
       if( keyword == e) {
         retour.response += response[key];
       }
-    })
+    }) */
   }
 
-  return currentBot;
+  return botFunct;
 }
 
