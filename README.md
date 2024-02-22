@@ -32,3 +32,9 @@ Analyse the coding rules with :
 ```bash
 npm run lint
 ```
+
+#### Site internet des Api utilisée : 
+
+Pour obtenir le code insee de notre localisation : `https://api.gouv.fr/documentation/api-geo`
+
+Pour obtenir la météo de notre localisation : `https://api.meteo-concept.com/documentation#appendix`

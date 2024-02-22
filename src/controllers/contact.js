@@ -88,8 +88,8 @@ export default () => {
       result: new Date().toLocaleTimeString()
     }, {
       nom: 'meteo',
-      mots: ['meteo', 'temps', 'Meteo', 'météo', 'Météo'],
-      result: meteo().then((res) => {return res})
+      mots: ['meteo', 'temps', 'Meteo', 'météo', 'Météo', 'temps'],
+      result: meteo()
     }]
   }];
   const bots = entitys.map((bot) => new Bot(bot));

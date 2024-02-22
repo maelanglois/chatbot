@@ -2,7 +2,8 @@ import axios from 'axios';
 import codes from './weather-code'
 
 export default () => {
-  return new Promise ((resolve, reject) => { navigator.geolocation.getCurrentPosition((position) => {
+  const tab = [];
+  const promesse = new Promise ((resolve, reject) => { navigator.geolocation.getCurrentPosition((position) => {
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
     axios.get(`https://geo.api.gouv.fr/communes?lat=${lat}&lon=${long}&&fields=code&format=json&geometry=centre`)
@@ -17,6 +18,7 @@ export default () => {
           codes().forEach((element) => {
             if (element.code === weather){
               const meteo = element.description;
+              tab.push(meteo);
               resolve(meteo);
             }
           })
@@ -30,4 +32,6 @@ export default () => {
       });
     }); 
   });
+
+  return tab;
 }
