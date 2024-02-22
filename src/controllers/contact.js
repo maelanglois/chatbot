@@ -15,7 +15,7 @@ export default () => {
         const { mots } = action;
         mots.forEach((mot) => {
           if (mot === word) {
-            result += viewChatBot(this.getNombre(), action.result);
+            result += viewChatBot(this.getNombre(), action.result); 
             this.currentBot = this.getNombre();
           }
         });
@@ -89,7 +89,7 @@ export default () => {
     }, {
       nom: 'meteo',
       mots: ['meteo', 'temps', 'Meteo', 'météo', 'Météo'],
-      result: console.log(meteo())
+      result: meteo().then((res) => {return res})
     }]
   }];
   const bots = entitys.map((bot) => new Bot(bot));
