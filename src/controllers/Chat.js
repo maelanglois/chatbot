@@ -59,12 +59,33 @@ const Search = class {
       const b = parseInt(sessionStorage.getItem('bot'), 10);
       document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
       document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+      const elInputSearch = document.querySelector('.chat-type');
+      elInputSearch.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          console.log(conv.currentBot);
+          const length = this.data.length;
+          for (let k = 0; k < length; k += 1) {
+            document.querySelector('#a'.concat(k)).classList.remove('active');
+          }
+          document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+          document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+        }
+      });
+      const submit = document.querySelector('#submit');
+      submit.addEventListener('click', () => {
+        console.log(conv.currentBot);
+        const length = this.data.length;
+        for (let k = 0; k < length; k += 1) {
+          document.querySelector('#a'.concat(k)).classList.remove('active');
+        }
+        document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+        document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+      });
     }
   }
 
   run() {
     this.data = chatBot();
-    console.log(this.data);
     this.el.innerHTML = this.render();
     const conv = new Conversation();
     this.currentBot(conv);

@@ -4,7 +4,6 @@ export default (k, message) => {
   const currentBot = activeBot(k);
   const nom = currentBot.getNom();
   const image = currentBot.getImage();
-  const statut = currentBot.getStatut();
   const date = new Date().toLocaleString();
 
   return `

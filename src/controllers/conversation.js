@@ -1,5 +1,5 @@
 import viewChatUser from '../views/chatUser';
-import chatBot from './contact.js';
+import chatBot from './contact';
 
 const Conversation = class {
   constructor() {
@@ -12,7 +12,6 @@ const Conversation = class {
   }
 
   userMessage() {
-    let result;
     const bots = chatBot();
     const elInputSearch = document.querySelector('.chat-type');
     elInputSearch.addEventListener('keyup', (e) => {
@@ -26,24 +25,23 @@ const Conversation = class {
         this.el.innerHTML = this.conversation;
         bots.forEach((bot) => {
           this.botAction(bot, arrKeywords);
-          this.currentBot = bot.getNombre();
-        })
+        });
       }
     });
     const submit = document.querySelector('#submit');
     submit.addEventListener('click', () => {
-      const keyWord = elInputSearch.value;
-      this.user += keyWord;
-      const user = viewChatUser(keyWord);
+      const keyWords = elInputSearch.value;
+      this.user += keyWords;
+      const user = viewChatUser(keyWords);
       this.conversation += user;
       elInputSearch.value = '';
+      const arrKeywords = keyWords.split(' ');
       this.el.innerHTML = this.conversation;
       bots.forEach((bot) => {
         this.botAction(bot, arrKeywords);
-        this.currentBot = bot.getNombre()
-      })
+      });
+      return this.currentBot;
     });
-
   }
 
   botAction(bot, keywords) {
@@ -51,11 +49,11 @@ const Conversation = class {
       if (bot.thisAction(element)) {
         this.conversation += bot.thisAction(element);
         this.el.innerHTML = this.conversation;
-        return bot.getNombre();
+        this.currentBot = bot.currentBot;
+        sessionStorage.setItem('bot', this.currentBot);
       }
-    })
+    });
   }
-
 
   run() {
     this.userMessage();
