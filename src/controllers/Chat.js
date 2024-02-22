@@ -5,6 +5,7 @@ import viewActiveChat from '../views/active-chat';
 /* import viewChatBot from '../views/chatBot';
 import viewChatUser from '../views/chatUser'; */
 import Conversation from './conversation';
+import meteo from './meteo';
 
 const Search = class {
   constructor(params) {
@@ -89,6 +90,7 @@ const Search = class {
     this.el.innerHTML = this.render();
     const conv = new Conversation();
     this.currentBot(conv);
+    meteo();
   }
 };
 

@@ -1,4 +1,5 @@
 import viewChatBot from '../views/chatBot';
+import meteo from './meteo';
 
 export default () => {
   const Bot = class Bot {
@@ -87,8 +88,8 @@ export default () => {
       result: new Date().toLocaleTimeString()
     }, {
       nom: 'meteo',
-      mots: ['meteo', 'temps', 'Meteo'],
-      result: 'Il fait beau !'
+      mots: ['meteo', 'temps', 'Meteo', 'météo', 'Météo'],
+      result: console.log(meteo())
     }]
   }];
   const bots = entitys.map((bot) => new Bot(bot));
