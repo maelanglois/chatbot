@@ -64,7 +64,6 @@ const Chat = class {
       elInputSearch.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           console.log(conv.currentBot);
-          const length = this.data.length;
           for (let k = 0; k < length; k += 1) {
             document.querySelector('#a'.concat(k)).classList.remove('active');
           }
@@ -75,7 +74,6 @@ const Chat = class {
       const submit = document.querySelector('#submit');
       submit.addEventListener('click', () => {
         console.log(conv.currentBot);
-        const length = this.data.length;
         for (let k = 0; k < length; k += 1) {
           document.querySelector('#a'.concat(k)).classList.remove('active');
         }
@@ -94,4 +92,4 @@ const Chat = class {
   }
 };
 
-export default Search;
+export default Chat;
