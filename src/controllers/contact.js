@@ -23,27 +23,27 @@ export default () => {
       return result;
     }
 
-    getNom() {
+    get nom() {
       const { nom } = this.entity;
       return nom;
     }
 
-    getImage() {
+    get image() {
       const { image } = this.entity;
       return image;
     }
 
-    getStatut() {
+    get statut() {
       const { statut } = this.entity;
       return statut;
     }
 
-    getNombre() {
+    get nombre() {
       const { nombre } = this.entity;
       return nombre;
     }
 
-    getActions() {
+    get actions() {
       const { actions } = this.entity;
       return actions;
     }

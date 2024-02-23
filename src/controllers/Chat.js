@@ -7,7 +7,7 @@ import viewChatUser from '../views/chatUser'; */
 import Conversation from './conversation';
 import meteo from './meteo';
 
-const Search = class {
+const Chat = class {
   constructor(params) {
     this.el = document.querySelector('#root');
     this.params = params;
