@@ -12,6 +12,8 @@ const Conversation = class {
     this.run();
   }
 
+  /* Show the message the user sends on "click" or "enter" */
+
   userMessage() {
     const elInputSearch = document.querySelector('.chat-type');
     elInputSearch.addEventListener('keyup', (e) => {
@@ -43,6 +45,8 @@ const Conversation = class {
       return this.currentBot;
     });
   }
+
+  /* Searching if any word sent by the user allows an action to the bot */
 
   botAction(bot, keywords) {
     keywords.forEach((element) => {
