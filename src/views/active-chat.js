@@ -1,10 +1,8 @@
-import activeBot from '../controllers/active-bot';
-
-export default (k) => {
-  const currentBot = activeBot(k);
-  const nom = currentBot.getNom();
-  const image = currentBot.getImage();
-  const statut = currentBot.getStatut();
+export default (bot) => {
+  const  { nom,
+    image,
+    statut
+  } = bot;
 
   return `
       <img src="${image}" class="list-avatar"/>

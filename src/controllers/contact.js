@@ -15,7 +15,7 @@ export default () => {
         const { mots } = action;
         mots.forEach((mot) => {
           if (mot === word) {
-            result += viewChatBot(this.getNombre(), action.result);
+            result += viewChatBot(this.entity, action.result);
             this.currentBot = this.getNombre();
           }
         });

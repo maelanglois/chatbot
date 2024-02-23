@@ -2,10 +2,7 @@ import chatBot from './contact';
 import viewContacts from '../views/contacts';
 import viewBubble from '../views/chat-bubble';
 import viewActiveChat from '../views/active-chat';
-/* import viewChatBot from '../views/chatBot';
-import viewChatUser from '../views/chatUser'; */
 import Conversation from './conversation';
-import meteo from './meteo';
 
 const Chat = class {
   constructor(params) {
@@ -57,9 +54,8 @@ const Chat = class {
       for (let k = 0; k < length; k += 1) {
         document.querySelector('#a'.concat(k)).classList.remove('active');
       }
-      const b = parseInt(sessionStorage.getItem('bot'), 10);
-      document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
-      document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+      document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
+      document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
       const elInputSearch = document.querySelector('.chat-type');
       elInputSearch.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
@@ -67,8 +63,8 @@ const Chat = class {
           for (let k = 0; k < length; k += 1) {
             document.querySelector('#a'.concat(k)).classList.remove('active');
           }
-          document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
-          document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+          document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
+          document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
         }
       });
       const submit = document.querySelector('#submit');
@@ -77,8 +73,8 @@ const Chat = class {
         for (let k = 0; k < length; k += 1) {
           document.querySelector('#a'.concat(k)).classList.remove('active');
         }
-        document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
-        document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
+        document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
+        document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
       });
     }
   }
@@ -88,7 +84,6 @@ const Chat = class {
     this.el.innerHTML = this.render();
     const conv = new Conversation();
     this.currentBot(conv);
-    meteo();
   }
 };
 

@@ -5,10 +5,12 @@ const Conversation = class {
   constructor() {
     this.el = document.querySelector('.messages');
     this.user = [];
-    this.currentBot = 0;
+    this.currentBot = chatBot()[0];
     this.conversation = '';
+    this.bots = chatBot();
 
     this.run();
+    console.log(this.currentBot);
   }
 
   userMessage() {
@@ -23,7 +25,7 @@ const Conversation = class {
         elInputSearch.value = '';
         const arrKeywords = keyWords.split(' ');
         this.el.innerHTML = this.conversation;
-        bots.forEach((bot) => {
+        this.bots.forEach((bot) => {
           this.botAction(bot, arrKeywords);
         });
       }
@@ -37,7 +39,7 @@ const Conversation = class {
       elInputSearch.value = '';
       const arrKeywords = keyWords.split(' ');
       this.el.innerHTML = this.conversation;
-      bots.forEach((bot) => {
+      this.bots.forEach((bot) => {
         this.botAction(bot, arrKeywords);
       });
       return this.currentBot;
@@ -49,8 +51,7 @@ const Conversation = class {
       if (bot.thisAction(element)) {
         this.conversation += bot.thisAction(element);
         this.el.innerHTML = this.conversation;
-        this.currentBot = bot.currentBot;
-        sessionStorage.setItem('bot', this.currentBot);
+        this.currentBot = bot;
       }
     });
   }

@@ -1,9 +1,8 @@
-import activeBot from '../controllers/active-bot';
-
-export default (k, message) => {
-  const currentBot = activeBot(k);
-  const nom = currentBot.getNom();
-  const image = currentBot.getImage();
+export default (bot, message) => {
+  const {
+    nom, 
+    image
+  } = bot;
   const date = new Date().toLocaleString();
 
   return `
