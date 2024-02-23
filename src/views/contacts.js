@@ -1,8 +1,10 @@
 export default (data) => {
-  const nom = data.getNom();
-  const image = data.getImage();
-  const statut = data.getStatut();
-  const nombre = data.getNombre();
+  const {
+    nom,
+    image,
+    statut,
+    nombre
+  } = data.entity
 
   return `
     <div class="list-bot" value="${nombre}" id="a${nombre}">
