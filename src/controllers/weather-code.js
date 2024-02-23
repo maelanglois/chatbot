@@ -264,5 +264,5 @@ export default () => {
     code: 235,
     description: 'averses de grêle'
   }];
-  return codes
-}
+  return codes;
+};
