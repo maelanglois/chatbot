@@ -16,6 +16,23 @@ const Conversation = class {
     const elInputSearch = document.querySelector('.chat-type');
     elInputSearch.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
+        if (elInputSearch.value !== '') {
+          const keyWords = elInputSearch.value;
+          this.user += keyWords;
+          const user = viewChatUser(keyWords);
+          this.conversation += user;
+          elInputSearch.value = '';
+          const arrKeywords = keyWords.split(' ');
+          this.el.innerHTML = this.conversation;
+          this.bots.forEach((bot) => {
+            this.botAction(bot, arrKeywords);
+          });
+        }
+      }
+    });
+    const submit = document.querySelector('#submit');
+    submit.addEventListener('click', () => {
+      if (elInputSearch.value !== '') {
         const keyWords = elInputSearch.value;
         this.user += keyWords;
         const user = viewChatUser(keyWords);
@@ -27,20 +44,6 @@ const Conversation = class {
           this.botAction(bot, arrKeywords);
         });
       }
-    });
-    const submit = document.querySelector('#submit');
-    submit.addEventListener('click', () => {
-      const keyWords = elInputSearch.value;
-      this.user += keyWords;
-      const user = viewChatUser(keyWords);
-      this.conversation += user;
-      elInputSearch.value = '';
-      const arrKeywords = keyWords.split(' ');
-      this.el.innerHTML = this.conversation;
-      this.bots.forEach((bot) => {
-        this.botAction(bot, arrKeywords);
-      });
-      return this.currentBot;
     });
   }
 
