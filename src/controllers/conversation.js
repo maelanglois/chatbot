@@ -5,16 +5,14 @@ const Conversation = class {
   constructor() {
     this.el = document.querySelector('.messages');
     this.user = [];
-    this.currentBot = chatBot()[0];
+    this.currentBot = chatBot().shift();
     this.conversation = '';
     this.bots = chatBot();
 
     this.run();
-    console.log(this.currentBot);
   }
 
   userMessage() {
-    const bots = chatBot();
     const elInputSearch = document.querySelector('.chat-type');
     elInputSearch.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {

@@ -1,5 +1,6 @@
 export default (bot) => {
-  const  { nom,
+  const {
+    nom,
     image,
     statut
   } = bot;

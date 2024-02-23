@@ -50,7 +50,7 @@ const Chat = class {
 
   currentBot(conv) {
     if (conv) {
-      const length = this.data.length;
+      const length = this.data.entries();
       for (let k = 0; k < length; k += 1) {
         document.querySelector('#a'.concat(k)).classList.remove('active');
       }
@@ -59,7 +59,6 @@ const Chat = class {
       const elInputSearch = document.querySelector('.chat-type');
       elInputSearch.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
-          console.log(conv.currentBot);
           for (let k = 0; k < length; k += 1) {
             document.querySelector('#a'.concat(k)).classList.remove('active');
           }
@@ -69,7 +68,6 @@ const Chat = class {
       });
       const submit = document.querySelector('#submit');
       submit.addEventListener('click', () => {
-        console.log(conv.currentBot);
         for (let k = 0; k < length; k += 1) {
           document.querySelector('#a'.concat(k)).classList.remove('active');
         }

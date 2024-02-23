@@ -1,6 +1,6 @@
 export default (bot, message) => {
   const {
-    nom, 
+    nom,
     image
   } = bot;
   const date = new Date().toLocaleString();

@@ -16,7 +16,7 @@ export default () => {
         mots.forEach((mot) => {
           if (mot === word) {
             result += viewChatBot(this.entity, action.result);
-            const { nombre } = this.entity; 
+            const { nombre } = this.entity;
             this.currentBot = nombre;
           }
         });
@@ -292,24 +292,23 @@ export default () => {
       description: 'averses de grêle'
     }];
     const tab = [];
-    const promesse = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
         axios.get(`https://geo.api.gouv.fr/communes?lat=${lat}&lon=${long}&&fields=code&format=json&geometry=centre`)
-          .then((res) => {
-            const { data } = res;
+          .then((response) => {
+            const { data } = response;
             const { code } = data[0];
-  
             axios.get(`https://api.meteo-concept.com/api/forecast/daily/0?token=eb04c30ea6c2690fadb84ccd77cb59b701b2be447dce9273e235a1014815a673&insee=${code}`)
               .then((res) => {
                 const { forecast } = res.data;
                 const { weather } = forecast;
                 codes.forEach((element) => {
                   if (element.code === weather) {
-                    const meteo = element.description;
-                    tab.push(meteo);
-                    resolve(meteo);
+                    const meteoResponse = element.description;
+                    tab.push(meteoResponse);
+                    resolve(meteoResponse);
                   }
                 });
               })
@@ -322,7 +321,6 @@ export default () => {
           });
       });
     });
-  
     return tab;
   }
 

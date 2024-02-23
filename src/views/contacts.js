@@ -4,7 +4,7 @@ export default (data) => {
     image,
     statut,
     nombre
-  } = data.entity
+  } = data.entity;
 
   return `
     <div class="list-bot" value="${nombre}" id="a${nombre}">
