@@ -1,12 +1,16 @@
 import axios from 'axios';
 import viewChatBot from '../views/chatBot';
 
+/* Creating the bots */
+
 export default () => {
   const Bot = class Bot {
     constructor(entity) {
       this.entity = entity;
       this.currentBot = 0;
     }
+
+    /* Bot answering if asked something he knows how to respond to */
 
     thisAction(word) {
       const { actions } = this.entity;
@@ -24,6 +28,8 @@ export default () => {
       return result;
     }
   };
+
+  /* Getting the meteo api depending on the code the api gives us */
 
   function meteo() {
     const codes = [{
@@ -323,6 +329,8 @@ export default () => {
     });
     return tab;
   }
+
+  /* Each bot created and their commands */
 
   const entitys = [{
     nom: 'Wall-e',

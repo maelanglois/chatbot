@@ -13,6 +13,8 @@ const Chat = class {
     this.run();
   }
 
+  /* Rendering the views in the "chat" page */
+
   render() {
     return `
       <div class="container-chat">
@@ -47,6 +49,8 @@ const Chat = class {
 
     return updateData;
   }
+
+  /* Changing the active bot when he's the one answering */
 
   currentBot(conv) {
     if (conv) {
