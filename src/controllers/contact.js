@@ -27,6 +27,10 @@ export default () => {
       });
       return result;
     }
+
+    thisMessage() {
+
+    }
   };
 
   /* Getting the meteo api depending on the code the api gives us */
@@ -375,6 +379,10 @@ export default () => {
       result: meteo()
     }]
   }];
+
+  axios.get('http://localhost/messages')
+    .then((response) => response.data.map((bot) => console.log(bot.text)));
+
   const bots = entitys.map((bot) => new Bot(bot));
 
   return bots;
