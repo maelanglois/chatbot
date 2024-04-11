@@ -29,6 +29,7 @@ const Conversation = class {
           this.bots.forEach((bot) => {
             this.botAction(bot, arrKeywords);
           });
+          this.el.scrollTop = this.el.scrollHeight;
         }
       }
     });
@@ -45,6 +46,7 @@ const Conversation = class {
         this.bots.forEach((bot) => {
           this.botAction(bot, arrKeywords);
         });
+        this.el.scrollTop = this.el.scrollHeight;
       }
     });
   }
