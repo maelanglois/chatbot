@@ -15,7 +15,6 @@ const Conversation = class {
 
   userMessage() {
     const elInputSearch = document.querySelector('.chat-type');
-    console.log(elInputSearch);
     elInputSearch.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
         if (elInputSearch.value !== '') {

@@ -14,31 +14,41 @@ const Chat = class {
   }
 
   /* Rendering the views in the "chat" page */
+
   render() {
-        this.el.innerHTML = `
-        <div class="container-chat">
-          <div class="chat-list">
-            <div class="list-title">
-              <span class="material-symbols-outlined">groups</span>
-              <span class="list-text">Participants</span>
+
+    this.data
+    .then((result)=> {
+      this.el.innerHTML = `
+      <div class="container-chat">
+        <div class="chat-list">
+          <div class="list-title">
+            <span class="material-symbols-outlined">groups</span>
+            <span class="list-text">Participants</span>
+          </div>
+          ${result.map((bot) => viewContacts(bot)).join('')}
+        </div>
+        <div class="chat">
+          <div class="discussion" id="discussion">
+            <div class="header">
+            </div>
+            <div class="messages">
             </div>
           </div>
-          <div class="chat">
-            <div class="discussion" id="discussion">
-              <div class="header">
-              </div>
-              <div class="messages">
-              </div>
-            </div>
-            <div class="chat-content">
-              ${viewBubble()}
-            </div>
+          <div class="chat-content">
+            ${viewBubble()}
           </div>
         </div>
-      `;
-  };
-      
-  
+      </div>
+      `;    
+      function convRender() {
+        const conv = new Conversation();
+        this.currentBot(conv);
+      }
+      convRender();
+    })
+    
+  }
 
   filters(param, data, filter) {
     let updateData = data;
@@ -53,7 +63,7 @@ const Chat = class {
   /* Changing the active bot when he's the one answering */
 
   currentBot(conv) {
-    if (!(conv.currentBot)) {
+    if (!empty(conv.currentBot)) {
       const length = this.data.entries();
       for (let k = 0; k < length; k += 1) {
         document.querySelector('#a'.concat(k)).classList.remove('active');
@@ -78,14 +88,14 @@ const Chat = class {
         document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
         document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
       });
+      console.log(conv);
     }
   }
 
   run() {
     this.data = chatBot();
     this.render();
-    const conv = new Conversation();
-    this.currentBot(conv);
+
   }
 };
 

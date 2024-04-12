@@ -54,8 +54,6 @@ export default () => {
       this.id = entity.id;
       this.actions = this.actionsLoad();
       this.thisAction();
-      this.currentBot = this.defaultBot();
-      console.log(this.currentBot);
     }
 
     actionsLoad() {
@@ -174,16 +172,11 @@ export default () => {
   } */
 
   /* Each bot created and their commands */
-
-  async function loadBots() {
-    const bots = [];
-    const reponse = await fetch('http://localhost/users');
-    const entitys = await reponse.json();
-    entitys.map((bot) => bots.push(new Bot(bot)));
-    return bots;
-  }
-
-  const bots = loadBots();
-
+  const bots = [];
+  axios.get('http://localhost/users')
+  .then((botts) => {botts.data.map((bot) => bots.push(bot))})
+  const array = [];
+  array.from(bots);
+console.log(array);
   return bots;
 };
