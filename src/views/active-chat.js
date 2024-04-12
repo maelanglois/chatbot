@@ -1,15 +1,15 @@
 export default (bot) => {
   const {
-    nom,
-    image,
-    statut
+    name,
+    picture,
+    status
   } = bot;
 
   return `
-      <img src="${image}" class="list-avatar"/>
+      <img src="${picture}" class="list-avatar"/>
       <div class="list-infos">
-        <div class="list-pseudo">${nom}</div>
-        <div class="list-statut">${statut}</div>
+        <div class="list-pseudo">${name}</div>
+        <div class="list-statut">${status}</div>
       </div>
   `;
 };

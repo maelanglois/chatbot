@@ -14,31 +14,31 @@ const Chat = class {
   }
 
   /* Rendering the views in the "chat" page */
-
   render() {
-    return `
-      <div class="container-chat">
-        <div class="chat-list">
-          <div class="list-title">
-            <span class="material-symbols-outlined">groups</span>
-            <span class="list-text">Participants</span>
-          </div>
-          ${this.data.map((Bot) => viewContacts(Bot, this.data)).join('')}
-        </div>
-        <div class="chat">
-          <div class="discussion" id="discussion">
-            <div class="header">
-            </div>
-            <div class="messages">
+        this.el.innerHTML = `
+        <div class="container-chat">
+          <div class="chat-list">
+            <div class="list-title">
+              <span class="material-symbols-outlined">groups</span>
+              <span class="list-text">Participants</span>
             </div>
           </div>
-          <div class="chat-content">
-            ${viewBubble()}
+          <div class="chat">
+            <div class="discussion" id="discussion">
+              <div class="header">
+              </div>
+              <div class="messages">
+              </div>
+            </div>
+            <div class="chat-content">
+              ${viewBubble()}
+            </div>
           </div>
         </div>
-      </div>
-    `;
-  }
+      `;
+  };
+      
+  
 
   filters(param, data, filter) {
     let updateData = data;
@@ -53,21 +53,21 @@ const Chat = class {
   /* Changing the active bot when he's the one answering */
 
   currentBot(conv) {
-    if (conv) {
+    if (!(conv.currentBot)) {
       const length = this.data.entries();
       for (let k = 0; k < length; k += 1) {
         document.querySelector('#a'.concat(k)).classList.remove('active');
       }
-      document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
-      document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
+      document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+      document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
       const elInputSearch = document.querySelector('.chat-type');
       elInputSearch.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           for (let k = 0; k < length; k += 1) {
             document.querySelector('#a'.concat(k)).classList.remove('active');
           }
-          document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
-          document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
+          document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+          document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
         }
       });
       const submit = document.querySelector('#submit');
@@ -75,15 +75,15 @@ const Chat = class {
         for (let k = 0; k < length; k += 1) {
           document.querySelector('#a'.concat(k)).classList.remove('active');
         }
-        document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
-        document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
+        document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot);
+        document.querySelector('#a'.concat(conv.currentBot)).className += ' active';
       });
     }
   }
 
   run() {
     this.data = chatBot();
-    this.el.innerHTML = this.render();
+    this.render();
     const conv = new Conversation();
     this.currentBot(conv);
   }

@@ -5,9 +5,8 @@ const Conversation = class {
   constructor() {
     this.el = document.querySelector('.messages');
     this.user = [];
-    this.currentBot = chatBot().shift();
-    this.conversation = '';
     this.bots = chatBot();
+    this.conversation = '';
 
     this.run();
   }
@@ -16,6 +15,7 @@ const Conversation = class {
 
   userMessage() {
     const elInputSearch = document.querySelector('.chat-type');
+    console.log(elInputSearch);
     elInputSearch.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
         if (elInputSearch.value !== '') {
@@ -64,7 +64,6 @@ const Conversation = class {
   }
 
   run() {
-    this.userMessage();
     this.el.innerHTML = this.conversation;
   }
 };
