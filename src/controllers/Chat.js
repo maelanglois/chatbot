@@ -56,7 +56,7 @@ const Chat = class {
     if (conv) {
       const length = this.data.entries();
       for (let k = 0; k < length; k += 1) {
-        document.querySelector('#a'.concat(k)).classList.remove('active');
+        document.querySelector('#a'.concat(k)).classList.remove(' active');
       }
       document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
       document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';
@@ -73,7 +73,7 @@ const Chat = class {
       const submit = document.querySelector('#submit');
       submit.addEventListener('click', () => {
         for (let k = 0; k < length; k += 1) {
-          document.querySelector('#a'.concat(k)).classList.remove('active');
+          document.querySelector('#a'.concat(k)).classList.remove(' active');
         }
         document.querySelector('.header').innerHTML = viewActiveChat(conv.currentBot.entity);
         document.querySelector('#a'.concat(conv.currentBot.currentBot)).className += ' active';

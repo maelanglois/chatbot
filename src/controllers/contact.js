@@ -385,5 +385,7 @@ export default () => {
 
   const bots = entitys.map((bot) => new Bot(bot));
 
+  console.log(bots);
+
   return bots;
 };
