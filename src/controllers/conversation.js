@@ -26,9 +26,17 @@ const Conversation = class {
           elInputSearch.value = '';
           const arrKeywords = keyWords.split(' ');
           this.el.innerHTML = this.conversation;
+          this.botScore = 0
           this.bots.forEach((bot) => {
             this.botAction(bot, arrKeywords);
           });
+          if (this.botScore === 0){
+            this.bots.forEach((bot) => {
+              const help = 'help';
+              const arrHelp = help.split(' ');
+              this.botAction(bot, arrHelp);
+            });
+          }
           this.el.scrollTop = this.el.scrollHeight;
         }
       }
@@ -43,9 +51,17 @@ const Conversation = class {
         elInputSearch.value = '';
         const arrKeywords = keyWords.split(' ');
         this.el.innerHTML = this.conversation;
+        this.botScore = 0
         this.bots.forEach((bot) => {
           this.botAction(bot, arrKeywords);
         });
+        if (this.botScore === 0){
+          this.bots.forEach((bot) => {
+            const help = 'help';
+            const arrHelp = help.split(' ');
+            this.botAction(bot, arrHelp);
+          });
+        }
         this.el.scrollTop = this.el.scrollHeight;
       }
     });
@@ -59,7 +75,8 @@ const Conversation = class {
         this.conversation += bot.thisAction(element);
         this.el.innerHTML = this.conversation;
         this.currentBot = bot;
-      }
+        this.botScore += 1
+      } 
     });
   }
 

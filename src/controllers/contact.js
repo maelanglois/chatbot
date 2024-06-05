@@ -27,10 +27,6 @@ export default () => {
       });
       return result;
     }
-
-    thisMessage() {
-
-    }
   };
 
   /* Getting the meteo api depending on the code the api gives us */
@@ -349,6 +345,14 @@ export default () => {
       nom: 'date',
       mots: ['Jour', 'jour', 'date'],
       result: new Date().toLocaleDateString()
+    }, {
+      nom: 'help',
+      mots: ['aide', 'help'],
+      result: `Liste des actions possible : <br>
+      - bonjour <br>
+      - date <br>
+      - heure <br>
+      - meteo`
     }]
   }, {
     nom: 'Bumblebee',
@@ -379,9 +383,6 @@ export default () => {
       result: meteo()
     }]
   }];
-
-  axios.get('http://localhost/messages')
-    .then((response) => response.data.map((bot) => console.log(bot.text)));
 
   const bots = entitys.map((bot) => new Bot(bot));
 
